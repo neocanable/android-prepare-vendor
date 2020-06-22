@@ -128,21 +128,21 @@ unmount_raw_image() {
 oatdump_deps_download() {
   local api_level="$1"
 
-  local download_url
+  # local download_url
   local out_file="$SCRIPTS_ROOT/hostTools/$HOST_OS/api-$api_level/oatdump_deps.zip"
   mkdir -p "$(dirname "$out_file")"
 
 
-  if [[ "$HOST_OS" == "Darwin" ]]; then
-    download_url="D_OATDUMP_URL_API$api_level"
-  else
-    download_url="L_OATDUMP_URL_API$api_level"
-  fi
+  # if [[ "$HOST_OS" == "Darwin" ]]; then
+  #   download_url="D_OATDUMP_URL_API$api_level"
+  # else
+  #   download_url="L_OATDUMP_URL_API$api_level"
+  # fi
 
-  wget -O "$out_file" "${!download_url}" || {
-    echo "[-] oatdump dependencies download failed"
-    abort 1
-  }
+  # wget -O "$out_file" "${!download_url}" || {
+  #   echo "[-] oatdump dependencies download failed"
+  #   abort 1
+  # }
 
   unzip -qq -o "$out_file" -d "$SCRIPTS_ROOT/hostTools/$HOST_OS/api-$api_level" || {
     echo "[-] oatdump dependencies unzip failed"
